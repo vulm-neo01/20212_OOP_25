@@ -1,4 +1,4 @@
-Tiến độ code theo video: #8: https://www.youtube.com/watch?v=srvDSypsJL0&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=9
+Tiến độ code theo video: #40: [https://www.youtube.com/watch?v=srvDSypsJL0&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=9](https://www.youtube.com/watch?v=Hd0D68guFKg&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=45)
 
 Code:
 - Lê Minh Vũ
