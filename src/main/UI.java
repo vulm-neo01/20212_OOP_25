@@ -8,6 +8,7 @@ import java.awt.geom.FlatteningPathIterator;
 import java.awt.image.BufferedImage;
 
 import entity.Entity;
+import object.OBJ_Background;
 import object.OBJ_Heart;
 import object.OBJ_ManaCrystal;
 
@@ -17,6 +18,7 @@ public class UI {
 	Graphics2D g2;
 	Font arial_40, arial_80B;
 	BufferedImage heart_full, heart_haft, heart_blank, crystal_full, crystal_blank;
+	BufferedImage background;
 	public boolean messageOn = false;
 	public String message = "";
 	int messageCounter = 0;
@@ -141,8 +143,11 @@ public class UI {
 		
 		if(titleScreenState == 0) {
 		
-			g2.setColor(new Color(0, 0, 0));
-			g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+		
+			g2.drawImage(gp.background.down1, 0, 0, gp.screenWidth, gp.screenHeight, null);
+			
+//			g2.setColor(new Color(0, 0, 0));
+//			g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 			//titles name
 			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
 			String text = "OOP";
@@ -156,6 +161,7 @@ public class UI {
 			//main color
 			g2.setColor(Color.white);
 			g2.drawString(text, x, y);
+				
 			
 			//image
 			x = gp.screenWidth/2 - (gp.tileSize*2)/2;

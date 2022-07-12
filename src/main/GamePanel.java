@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import entity.Entity;
 import entity.Player;
+import object.OBJ_Background;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -53,6 +54,7 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	//entity and object
 	public Player player = new Player(this, keyH);
+	public Entity background = new OBJ_Background(this);
 	public Entity obj[][] = new Entity[maxMap][20];
 	public Entity npc[][] = new Entity[maxMap][10];
 	public Entity monster[][] = new Entity[maxMap][20];
