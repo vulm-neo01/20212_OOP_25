@@ -61,12 +61,12 @@ public class KeyHandler implements KeyListener{
 			if(code == KeyEvent.VK_W) {
 				gp.ui.commandNum--;
 				if(gp.ui.commandNum < 0) {
-					gp.ui.commandNum = 2;
+					gp.ui.commandNum = 1;
 				}
 			}
 			if(code == KeyEvent.VK_S) {
 				gp.ui.commandNum++;
-				if(gp.ui.commandNum > 2) {
+				if(gp.ui.commandNum > 1) {
 					gp.ui.commandNum = 0;
 				}
 			}
@@ -74,10 +74,7 @@ public class KeyHandler implements KeyListener{
 				if(gp.ui.commandNum == 0) {
 					gp.ui.titleScreenState = 1;
 				}
-				if(gp.ui.commandNum == 1) {
-					
-				}
-				if(gp.ui.commandNum == 2 ) {
+				if(gp.ui.commandNum == 1 ) {
 					System.exit(0);
 				}
 			}

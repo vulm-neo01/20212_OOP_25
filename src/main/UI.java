@@ -149,8 +149,8 @@ public class UI {
 //			g2.setColor(new Color(0, 0, 0));
 //			g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 			//titles name
-			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
-			String text = "OOP";
+			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 90F));
+			String text = "GROUP 25";
 			int x = getXforCenteredText(text);
 			int y = gp.tileSize*3;
 			
@@ -171,27 +171,22 @@ public class UI {
 			//menu
 			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
 			
-			text = "NEW GAME";
+			text = "START";
 			x = getXforCenteredText(text);
 			y += gp.tileSize*3.5;
 			g2.drawString(text, x, y);
 			if(commandNum == 0) {
+//				g2.setColor(Color.red);
 				g2.drawString(">", x - gp.tileSize, y);
 			}
 			
-			text = "LOAD GAME";
+			
+			text = "END";
 			x = getXforCenteredText(text);
 			y += gp.tileSize;
 			g2.drawString(text, x, y);
 			if(commandNum == 1) {
-				g2.drawString(">", x - gp.tileSize, y);
-			}
-			
-			text = "QUIT";
-			x = getXforCenteredText(text);
-			y += gp.tileSize;
-			g2.drawString(text, x, y);
-			if(commandNum == 2) {
+//				g2.setColor(Color.red);
 				g2.drawString(">", x - gp.tileSize, y);
 			}
 		} else if(titleScreenState == 1) {
