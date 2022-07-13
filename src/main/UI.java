@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.geom.FlatteningPathIterator;
 import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
+
 import entity.Entity;
 import object.OBJ_Background;
 import object.OBJ_Heart;
@@ -18,7 +20,7 @@ public class UI {
 	Graphics2D g2;
 	Font arial_40, arial_80B;
 	BufferedImage heart_full, heart_haft, heart_blank, crystal_full, crystal_blank;
-	BufferedImage background;
+	BufferedImage background, player;
 	public boolean messageOn = false;
 	public String message = "";
 	int messageCounter = 0;
@@ -164,9 +166,14 @@ public class UI {
 				
 			
 			//image
-			x = gp.screenWidth/2 - (gp.tileSize*2)/2;
+			x = gp.screenWidth/2 - (gp.tileSize)*3;
 			y += gp.tileSize*2;
-			g2.drawImage(gp.player.down1, x, y, gp.tileSize*2, gp.tileSize*2, null);
+			player = setup("/player/boy_down_1", gp.tileSize, gp.tileSize);
+			g2.drawImage(player, x, y, gp.tileSize*2, gp.tileSize*2, null);
+			if (commandNum == 0) {
+				drawButtonCharacter(x - 10 , y - 10, gp.tileSize*2 + 20, gp.tileSize*2 + 20);
+//					System.out.println(gp.player.characterNum + " 0000");
+			}
 			
 			//menu
 			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
@@ -175,59 +182,52 @@ public class UI {
 			x = getXforCenteredText(text);
 			y += gp.tileSize*3.5;
 			g2.drawString(text, x, y);
-			if(commandNum == 0) {
-//				g2.setColor(Color.red);
-				g2.drawString(">", x - gp.tileSize, y);
+			if(commandNum == 1) {
+				drawButton(x - 15, y - 50, 170, 65, "START");
 			}
 			
 			
 			text = "END";
 			x = getXforCenteredText(text);
-			y += gp.tileSize;
+			y += gp.tileSize*2;
 			g2.drawString(text, x, y);
-			if(commandNum == 1) {
-//				g2.setColor(Color.red);
-				g2.drawString(">", x - gp.tileSize, y);
+			if(commandNum == 2) {
+				drawButton(x-15, y-50, 120, 65, "END");
 			}
 		} else if(titleScreenState == 1) {
+			g2.drawImage(gp.background.down1, 0, 0, gp.screenWidth, gp.screenHeight, null);
 			g2.setColor(Color.white);
 			g2.setFont(g2.getFont().deriveFont(42F));
 			
-			String text = "Select your class!";
-			int x = getXforCenteredText(text);
-			int y = gp.tileSize*3;
-			g2.drawString(text, x, y);
+			String text;
+			int x;
+			int y = gp.tileSize;
 			
-			text = "Fighter";
+			text = "Hard";
 			x = getXforCenteredText(text);
 			y += gp.tileSize*3;
 			g2.drawString(text, x, y);
 			if(commandNum == 0) {
-				g2.drawString(">", x - gp.tileSize, y);
+				drawButton(x - 15, y - 50, 130, 65, "Hard");
+//				g2.drawString(">", x - gp.tileSize, y);
 			}
 			
-			text = "Thief";
+			text = "Easy";
 			x = getXforCenteredText(text);
-			y += gp.tileSize;
+			y += gp.tileSize*2;
 			g2.drawString(text, x, y);
 			if(commandNum == 1) {
-				g2.drawString(">", x - gp.tileSize, y);
-			}
-			
-			text = "Sorcerer";
-			x = getXforCenteredText(text);
-			y += gp.tileSize;
-			g2.drawString(text, x, y);
-			if(commandNum == 2) {
-				g2.drawString(">", x - gp.tileSize, y);
+				drawButton(x - 15, y - 50, 130, 65, "Easy");
+//				g2.drawString(">", x - gp.tileSize, y);
 			}
 			
 			text = "Back";
 			x = getXforCenteredText(text);
 			y += gp.tileSize*2;
 			g2.drawString(text, x, y);
-			if(commandNum == 3) {
-				g2.drawString(">", x - gp.tileSize, y);
+			if(commandNum == 2) {
+				drawButton(x - 15, y - 50, 130, 65, "Back");
+//				g2.drawString(">", x - gp.tileSize, y);
 			}
 		}
 	}
@@ -453,16 +453,18 @@ public class UI {
 		y += gp.tileSize*4;
 		g2.drawString(text, x, y);
 		if(commandNum == 0) {
-			g2.drawString(">", x-40, y);
+			drawButton(x-10, y-gp.tileSize, 150, 65, "Retry");
+//			g2.drawString(">", x-40, y);
 		}
 		
 		//Back to the title screen
-		text = "Quit";
+		text = "End";
 		x = getXforCenteredText(text);
-		y += 55;
+		y += 65;
 		g2.drawString(text, x, y);
 		if(commandNum == 1) {
-			g2.drawString(">", x-40, y);
+			drawButton(x-10, y-gp.tileSize, 130, 65, "End");
+//			g2.drawString(">", x-40, y);
 		}
 	}
 	
@@ -470,6 +472,26 @@ public class UI {
 		int itemIndex = slotCol + (slotRow * 3);
 		return itemIndex;
 		
+	}
+	
+	public void drawButtonCharacter(int x, int y, int width, int height) {
+		Color c = new Color(255, 255, 255);
+		g2.setColor(c);
+		g2.setStroke(new BasicStroke(5));
+		g2.drawRoundRect(x + 5 , y + 5, width-10, height-10, 25, 25);
+	}
+	
+	public void drawButton(int x, int y, int width, int height, String text) {
+		Color c = new Color(255, 0, 0);
+		g2.setColor(c);
+		g2.fillRoundRect(x, y, width, height, 35, 35);
+		
+		c = new Color(255, 255, 255);
+		g2.setColor(c);
+		g2.setStroke(new BasicStroke(5));
+		g2.drawRoundRect(x + 5 , y + 5, width-10, height-10, 25, 25);
+		
+		g2.drawString(text, x + 15 , y + 50);
 	}
 	
 	public void drawSubWindow(int x, int y, int width, int heght) {
@@ -493,5 +515,19 @@ public class UI {
 		int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
 		int x = tailX - length;
 		return x;
+	}
+	
+	public BufferedImage setup(String imagePath, int width, int height) {
+		UtilityTool uTool = new UtilityTool();
+		BufferedImage image = null;
+		
+		try {
+			image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
+			image = uTool.scaleImage(image, width, height);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return image;
 	}
 }

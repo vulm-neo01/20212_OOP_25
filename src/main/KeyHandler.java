@@ -61,20 +61,21 @@ public class KeyHandler implements KeyListener{
 			if(code == KeyEvent.VK_W) {
 				gp.ui.commandNum--;
 				if(gp.ui.commandNum < 0) {
-					gp.ui.commandNum = 1;
+					gp.ui.commandNum = 2;
 				}
 			}
 			if(code == KeyEvent.VK_S) {
+				System.out.println("S");
 				gp.ui.commandNum++;
-				if(gp.ui.commandNum > 1) {
+				if(gp.ui.commandNum > 2) {
 					gp.ui.commandNum = 0;
 				}
 			}
 			if(code == KeyEvent.VK_ENTER) {
-				if(gp.ui.commandNum == 0) {
+				if(gp.ui.commandNum == 1) {
 					gp.ui.titleScreenState = 1;
 				}
-				if(gp.ui.commandNum == 1 ) {
+				if(gp.ui.commandNum == 2 ) {
 					System.exit(0);
 				}
 			}
@@ -84,32 +85,29 @@ public class KeyHandler implements KeyListener{
 			if(code == KeyEvent.VK_W) {
 				gp.ui.commandNum--;
 				if(gp.ui.commandNum < 0) {
-					gp.ui.commandNum = 3;
+					gp.ui.commandNum = 2;
 				}
 			}
 			if(code == KeyEvent.VK_S) {
+				System.out.println("S");
 				gp.ui.commandNum++;
-				if(gp.ui.commandNum > 3) {
+				if(gp.ui.commandNum > 2) {
 					gp.ui.commandNum = 0;
 				}
 			}
 			if(code == KeyEvent.VK_ENTER) {
+	
 				if(gp.ui.commandNum == 0) {
-					System.out.println("You some fighter specific atuff!");
+//					System.out.println("You some thief specific atuff!");
 					gp.gameState = gp.playState;
 					gp.playMusic(0);
 				}
-				if(gp.ui.commandNum == 1) {
-					System.out.println("You some thief specific atuff!");
+				if(gp.ui.commandNum == 1 ) {
+//					System.out.println("You some scrocerer specific atuff!");
 					gp.gameState = gp.playState;
 					gp.playMusic(0);
 				}
 				if(gp.ui.commandNum == 2 ) {
-					System.out.println("You some scrocerer specific atuff!");
-					gp.gameState = gp.playState;
-					gp.playMusic(0);
-				}
-				if(gp.ui.commandNum == 3 ) {
 					gp.ui.titleScreenState = 0;
 				}
 			}
@@ -122,6 +120,7 @@ public class KeyHandler implements KeyListener{
 		}
 		
 		if(code == KeyEvent.VK_S) {
+			System.out.println("S");
 			downPressed = true;
 		}
 		
@@ -141,6 +140,7 @@ public class KeyHandler implements KeyListener{
 			}
 			
 			if(code == KeyEvent.VK_S) {
+				System.out.println("S");
 				downPressed = true;
 			}
 			
@@ -204,6 +204,7 @@ public class KeyHandler implements KeyListener{
 		}
 		
 		if(code == KeyEvent.VK_S) {
+			System.out.println("S");
 			if(gp.ui.slotRow != 3) {
 				gp.ui.slotRow++;
 				gp.playSE(8);
@@ -238,6 +239,7 @@ public class KeyHandler implements KeyListener{
 			gp.playSE(8);
 		}
 		if(code == KeyEvent.VK_S) {
+			System.out.println("S");
 			gp.ui.commandNum++;
 			if(gp.ui.commandNum > 1) {
 				gp.ui.commandNum = 0;
@@ -251,8 +253,7 @@ public class KeyHandler implements KeyListener{
 				gp.playMusic(0);
 			}
 			else if(gp.ui.commandNum == 1) {
-				gp.gameState = gp.titleState;
-				gp.restart();
+				System.exit(0);
 			}
 		}
 	}
