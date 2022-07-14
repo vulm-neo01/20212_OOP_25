@@ -66,7 +66,6 @@ public class KeyHandler implements KeyListener{
 				}
 			}
 			if(code == KeyEvent.VK_S) {
-				System.out.println("S");
 				gp.ui.commandNum++;
 				if(gp.ui.commandNum > 3) {
 					gp.ui.commandNum = 0;
@@ -101,7 +100,6 @@ public class KeyHandler implements KeyListener{
 				}
 			}
 			if(code == KeyEvent.VK_S) {
-				System.out.println("S");
 				gp.ui.commandNum++;
 				if(gp.ui.commandNum > 2) {
 					gp.ui.commandNum = 0;
@@ -132,7 +130,6 @@ public class KeyHandler implements KeyListener{
 		}
 		
 		if(code == KeyEvent.VK_S) {
-			System.out.println("S");
 			downPressed = true;
 		}
 		
@@ -152,7 +149,6 @@ public class KeyHandler implements KeyListener{
 			}
 			
 			if(code == KeyEvent.VK_S) {
-				System.out.println("S");
 				downPressed = true;
 			}
 			
@@ -216,7 +212,6 @@ public class KeyHandler implements KeyListener{
 		}
 		
 		if(code == KeyEvent.VK_S) {
-			System.out.println("S");
 			if(gp.ui.slotRow != 3) {
 				gp.ui.slotRow++;
 				gp.playSE(8);
@@ -251,7 +246,6 @@ public class KeyHandler implements KeyListener{
 			gp.playSE(8);
 		}
 		if(code == KeyEvent.VK_S) {
-			System.out.println("S");
 			gp.ui.commandNum++;
 			if(gp.ui.commandNum > 1) {
 				gp.ui.commandNum = 0;
