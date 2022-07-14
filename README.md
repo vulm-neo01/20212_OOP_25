@@ -1,4 +1,11 @@
 Tiến độ code theo video: #40: [https://www.youtube.com/watch?v=srvDSypsJL0&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=9](https://www.youtube.com/watch?v=Hd0D68guFKg&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=45)
+Xem lại để code lại:
+#15: https://www.youtube.com/watch?v=WcYIEJGIEdQ&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=15&ab_channel=RyiSnow
+#: https://www.youtube.com/watch?v=KR0ONBHY1SU&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=31&ab_channel=RyiSnow
+#30: https://www.youtube.com/watch?v=NN0iQZX_51M&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=35&ab_channel=RyiSnow
+#37: https://www.youtube.com/watch?v=KelSLAh-uBg&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=42&ab_channel=RyiSnow
+#40: https://www.youtube.com/watch?v=Hd0D68guFKg&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=45&ab_channel=RyiSnow
+#43: https://www.youtube.com/watch?v=Mb9dszhWop4&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=48&ab_channel=RyiSnow
 
 Code:
 - Lê Minh Vũ
