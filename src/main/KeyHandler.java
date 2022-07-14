@@ -5,6 +5,8 @@ import java.awt.event.KeyListener;
 import java.nio.charset.CoderMalfunctionError;
 import java.security.spec.ECFieldFp;
 
+import entity.Player;
+
 public class KeyHandler implements KeyListener{
 	
 	GamePanel gp;
@@ -24,7 +26,6 @@ public class KeyHandler implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
 		int code = e.getKeyCode();
 		
 		// title state
@@ -41,7 +42,7 @@ public class KeyHandler implements KeyListener{
 		
 		else if(code == KeyEvent.VK_P) {
 			pauseState(code);
-			}
+		}
 		
 		//character state
 		else if(gp.gameState == gp.characterState) {
@@ -61,21 +62,32 @@ public class KeyHandler implements KeyListener{
 			if(code == KeyEvent.VK_W) {
 				gp.ui.commandNum--;
 				if(gp.ui.commandNum < 0) {
-					gp.ui.commandNum = 2;
+					gp.ui.commandNum = 3;
 				}
 			}
 			if(code == KeyEvent.VK_S) {
 				System.out.println("S");
 				gp.ui.commandNum++;
-				if(gp.ui.commandNum > 2) {
+				if(gp.ui.commandNum > 3) {
 					gp.ui.commandNum = 0;
 				}
 			}
+			if(gp.ui.commandNum == 0) {
+				if(code == KeyEvent.VK_ENTER) {
+					gp.ui.characterNum = 0;
+				}
+			}
+			
+			if(gp.ui.commandNum == 1) {
+				if(code == KeyEvent.VK_ENTER) {
+					gp.ui.characterNum = 1;
+				}
+			}
 			if(code == KeyEvent.VK_ENTER) {
-				if(gp.ui.commandNum == 1) {
+				if(gp.ui.commandNum == 2) {
 					gp.ui.titleScreenState = 1;
 				}
-				if(gp.ui.commandNum == 2 ) {
+				if(gp.ui.commandNum == 3 ) {
 					System.exit(0);
 				}
 			}

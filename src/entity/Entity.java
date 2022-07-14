@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import main.GamePanel;
+import main.UI;
 import main.UtilityTool;
 
 public class Entity {

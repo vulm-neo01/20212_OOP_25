@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -25,12 +26,12 @@ public class Player extends Entity{
 	public boolean attackCanceled = false;
 	public ArrayList<Entity> inventory = new ArrayList<>();
 	public final int maxInventorySize = 20;
+	public int color;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		
 		super(gp);
 		this.keyH = keyH;
-		
 		screenX = gp.screenWidth/2 - (gp.tileSize/2);
 		screenY = gp.screenHeight/2 - (gp.tileSize/2);
 		
@@ -45,9 +46,8 @@ public class Player extends Entity{
 //		attackArea.width = 36;
 //		attackArea.height = 36;
 		
-		
-		setDefaultValues();
 		getPlayerImage();
+		setDefaultValues();
 		getPlayerAttackImage();
 		setItems();
 	}
@@ -81,14 +81,12 @@ public class Player extends Entity{
 	}
 	
 	public void setDefaultPositions() {
-		
 		worldX = gp.tileSize * 23;
 		worldY = gp.tileSize * 21;
 		direction = "down";
 	}
 	
 	public void restoreLifeAndMan() {
-		
 		life = maxLife;
 		mana = maxMana;
 		invincible = false;
@@ -120,15 +118,28 @@ public class Player extends Entity{
 	}
 	
 	public void getPlayerImage() {
+		if(color == 0) {
+			up1 = setup("/player/boy_up_1", gp.tileSize, gp.tileSize);
+			up2 = setup("/player/boy_up_2", gp.tileSize, gp.tileSize);
+			down1 = setup("/player/boy_down_1", gp.tileSize, gp.tileSize);
+			down2 = setup("/player/boy_down_2", gp.tileSize, gp.tileSize);
+			left1 = setup("/player/boy_left_1", gp.tileSize, gp.tileSize);
+			left2 = setup("/player/boy_left_2", gp.tileSize, gp.tileSize);
+			right1 = setup("/player/boy_right_1", gp.tileSize, gp.tileSize);
+			right2 = setup("/player/boy_right_2", gp.tileSize, gp.tileSize);
+		}
+		if(color == 1) {
+			up1 = setup("/npc/oldman_up_1", gp.tileSize, gp.tileSize);
+			up2 = setup("/npc/oldman_up_2", gp.tileSize, gp.tileSize);
+			down1 = setup("/npc/oldman_down_1", gp.tileSize, gp.tileSize);
+			down2 = setup("/npc/oldman_down_2", gp.tileSize, gp.tileSize);
+			left1 = setup("/npc/oldman_left_1", gp.tileSize, gp.tileSize);
+			left2 = setup("/npc/oldman_left_2", gp.tileSize, gp.tileSize);
+			right1 = setup("/npc/oldman_right_1", gp.tileSize, gp.tileSize);
+			right2 = setup("/npc/oldman_right_2", gp.tileSize, gp.tileSize);
+		}
 		
-		up1 = setup("/player/boy_up_1", gp.tileSize, gp.tileSize);
-		up2 = setup("/player/boy_up_2", gp.tileSize, gp.tileSize);
-		down1 = setup("/player/boy_down_1", gp.tileSize, gp.tileSize);
-		down2 = setup("/player/boy_down_2", gp.tileSize, gp.tileSize);
-		left1 = setup("/player/boy_left_1", gp.tileSize, gp.tileSize);
-		left2 = setup("/player/boy_left_2", gp.tileSize, gp.tileSize);
-		right1 = setup("/player/boy_right_1", gp.tileSize, gp.tileSize);
-		right2 = setup("/player/boy_right_2", gp.tileSize, gp.tileSize);
+		
 	}
 
 	public void getPlayerAttackImage() {

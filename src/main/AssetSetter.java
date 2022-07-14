@@ -68,6 +68,7 @@ public class AssetSetter {
 	}
 	
 	public void setMonster() {
+		
 		int mapNum = 0;
 		int i = 0;
 		gp.monster[mapNum][i] = new MON_GreenSlime(gp);

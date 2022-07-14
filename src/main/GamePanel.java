@@ -42,13 +42,13 @@ public class GamePanel extends JPanel implements Runnable {
 	//FPS
 	int FPS = 60;
 	
+	public UI ui = new UI(this);
 	TileManager tileM = new TileManager(this);
 	public KeyHandler keyH = new KeyHandler(this);
 	Sound music = new Sound();
 	Sound se = new Sound();
 	public CollisionChecker cChecker = new CollisionChecker(this); 
 	public AssetSetter aSetter = new AssetSetter(this);
-	public UI ui = new UI(this);
 	public EventHandler eHandler = new EventHandler(this);
 	Thread gameThread;
 	
@@ -85,19 +85,33 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 	
 	public void setupGame() {
+		gameState = titleState;
+		
 		aSetter.setObject();
 		aSetter.setNPC();
 		aSetter.setMonster();
+		
 //		playMusic(0);
 //		stopMusic();
-		gameState = titleState;
+		
 	}
-
+	
+//	public void setGame() {
+//		aSetter.setObject();
+//		aSetter.setNPC();
+//		aSetter.setMonster();
+////		playMusic(0);
+////		stopMusic();
+//	}
+//
 	public void retry() {
 		player.setDefaultPositions();
 		player.restoreLifeAndMan();
+//		player.color = ui.characterNum;
+//		setupGame();
 		aSetter.setObject();
 		aSetter.setNPC();
+		aSetter.setMonster();
 	}
 	
 	public void restart() {
@@ -174,7 +188,7 @@ public class GamePanel extends JPanel implements Runnable {
 			
 		}
 		if(gameState == pauseState) {
-			//nothing
+			
 		}
 	}
 	

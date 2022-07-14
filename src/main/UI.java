@@ -27,6 +27,7 @@ public class UI {
 	public boolean gameFinished = false;
 //	public String currentDialongueString = "";
 	public int commandNum = 0;
+	public int characterNum = 0;
 	public int titleScreenState = 0;
 	public int slotCol = 0;
 	public int slotRow = 0;
@@ -36,6 +37,7 @@ public class UI {
 		arial_40 = new Font("Arial", Font.PLAIN, 40);
 		arial_80B = new Font("Arial", Font.BOLD, 80);
 		
+//		drawTitlesScreen();
 		// creat hud object
 		Entity heart = new OBJ_Heart(gp);
 		heart_full = heart.image;
@@ -46,11 +48,6 @@ public class UI {
 		crystal_blank = crystal.image2;
 	}
 
-	public void showMessage(String text) {
-		message = text;
-		messageOn = true;
-	}
-	
 	public void draw(Graphics2D g2) {
 		
 		this.g2 = g2;
@@ -70,7 +67,7 @@ public class UI {
 		}
 		//pause state
 		if(gp.gameState == gp.pauseState) {
-			drawPlayerLife();
+//			drawPlayerLife();
 			drawPauseScreen();
 		}
 		//character state
@@ -134,7 +131,7 @@ public class UI {
 		x = gp.tileSize /2;
 		y = (int)(gp.tileSize *1.5);
 		i = 0;
-		while (i < gp.player.maxMana) {
+		while (i < gp.player.mana) {
 			g2.drawImage(crystal_full, x, y, null);
 			i++;
 			x += 35;
@@ -144,7 +141,6 @@ public class UI {
 	public void drawTitlesScreen() {
 		
 		if(titleScreenState == 0) {
-		
 		
 			g2.drawImage(gp.background.down1, 0, 0, gp.screenWidth, gp.screenHeight, null);
 			
@@ -175,6 +171,14 @@ public class UI {
 //					System.out.println(gp.player.characterNum + " 0000");
 			}
 			
+			player = setup("/npc/oldman_down_1", gp.tileSize, gp.tileSize);
+			x = gp.screenWidth/2 + (gp.tileSize);
+			g2.drawImage(player, x, y, gp.tileSize*2, gp.tileSize*2, null);
+			if (commandNum == 1) {
+				drawButtonCharacter(x - 10 , y - 10, gp.tileSize*2 + 20, gp.tileSize*2 + 20);
+//					System.out.println(gp.player.characterNum + " 0000");
+			}
+			
 			//menu
 			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
 			
@@ -182,7 +186,7 @@ public class UI {
 			x = getXforCenteredText(text);
 			y += gp.tileSize*3.5;
 			g2.drawString(text, x, y);
-			if(commandNum == 1) {
+			if(commandNum == 2) {
 				drawButton(x - 15, y - 50, 170, 65, "START");
 			}
 			
@@ -191,7 +195,7 @@ public class UI {
 			x = getXforCenteredText(text);
 			y += gp.tileSize*2;
 			g2.drawString(text, x, y);
-			if(commandNum == 2) {
+			if(commandNum == 3) {
 				drawButton(x-15, y-50, 120, 65, "END");
 			}
 		} else if(titleScreenState == 1) {
