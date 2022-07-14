@@ -360,7 +360,7 @@ public class Player extends Entity{
 					damage = 0;
 				}
 				
-				life -= damage;
+				life -= 1;
 				invincible = true; 
 			}
 		}
@@ -377,7 +377,7 @@ public class Player extends Entity{
 					damage = 0;
 				}
 				
-				gp.monster[gp.currentMap][i].life -= damage;
+				gp.monster[gp.currentMap][i].life -= 2;
 				gp.monster[gp.currentMap][i].invincible = true;
 				gp.monster[gp.currentMap][i].damageReaction();
 				
