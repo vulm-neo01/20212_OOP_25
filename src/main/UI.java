@@ -358,7 +358,7 @@ public class UI {
 //		
 //		drawSubWindow(x, y, width, hight);
 //	}
-//	
+	
 	public void drawInventory() {
 		
 		int frameX = gp.tileSize*9;
@@ -508,6 +508,7 @@ public class UI {
 		g2.setStroke(new BasicStroke(5));
 		g2.drawRoundRect(x + 5, y + 5, width -10, heght -10, 25, 25);
 	}
+	
 	
 	public int getXforCenteredText(String text) {
 		int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();

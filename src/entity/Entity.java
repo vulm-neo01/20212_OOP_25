@@ -166,6 +166,10 @@ public class Entity {
 				invincibleCounter = 0;
 			}
 		}
+		
+		if(shotAvaliableCounter < 30) {
+			shotAvaliableCounter++;
+		}
 	}
 	
 	public void damagePlayer(int attack) {

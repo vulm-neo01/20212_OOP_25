@@ -12,7 +12,7 @@ public class KeyHandler implements KeyListener{
 	GamePanel gp;
 	public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, shotKeyPressed;
 	//DEBUG
-	boolean checkDrawTime = false;
+	boolean showDebugText = false;
 	
 	public KeyHandler(GamePanel gp) {
 		this.gp = gp;
@@ -167,18 +167,22 @@ public class KeyHandler implements KeyListener{
 		if(code == KeyEvent.VK_F) {
 			shotKeyPressed = true;
 		}
+		if(code == KeyEvent.VK_P) {
+			gp.gameState = gp.pauseState;
+		}
 		
 		
 		//DEBUG
 		if(code == KeyEvent.VK_T) {
-			if(checkDrawTime == false) {
-				checkDrawTime = true;
+			if(showDebugText == false) {
+				showDebugText = true;
 			}
-			else if(checkDrawTime == true) {
-				checkDrawTime = false;
+			else if(showDebugText == true) {
+				showDebugText = false;
 			}
 		}
 		if(code == KeyEvent.VK_R) {
+			
 			switch (gp.currentMap) {
 			case 0: {
 				gp.tileM.loadMap("/maps/worldV3.txt", 0);
