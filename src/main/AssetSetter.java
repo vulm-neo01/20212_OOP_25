@@ -53,6 +53,18 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldX = gp.tileSize*22;
 		gp.obj[mapNum][i].worldY = gp.tileSize*31;
 		i++;
+		gp.obj[mapNum][i] = new OBJ_Key(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize*22;
+		gp.obj[mapNum][i].worldY = gp.tileSize*33;
+		i++;
+		gp.obj[mapNum][i] = new OBJ_Key(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize*22;
+		gp.obj[mapNum][i].worldY = gp.tileSize*35;
+		i++;
+		gp.obj[mapNum][i] = new OBJ_Potion_Red(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize*22;
+		gp.obj[mapNum][i].worldY = gp.tileSize*25;
+		i++;
 	}
 	
 	public void setNPC() {

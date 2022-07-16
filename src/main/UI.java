@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.FlatteningPathIterator;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -22,8 +23,11 @@ public class UI {
 	BufferedImage heart_full, heart_haft, heart_blank, crystal_full, crystal_blank;
 	BufferedImage background, player;
 	public boolean messageOn = false;
-	public String message = "";
-	int messageCounter = 0;
+//	public String message = "";
+//	int messageCounter = 0;
+	ArrayList<String> message = new ArrayList<>();
+	ArrayList<Integer> messageCounter = new ArrayList<>();
+	
 	public boolean gameFinished = false;
 //	public String currentDialongueString = "";
 	public int commandNum = 0;
@@ -47,6 +51,11 @@ public class UI {
 		crystal_full = crystal.image;
 		crystal_blank = crystal.image2;
 	}
+	
+	public void addMessage(String text) {
+		message.add(text);
+		messageCounter.add(0);
+	}
 
 	public void draw(Graphics2D g2) {
 		
@@ -64,10 +73,11 @@ public class UI {
 		if(gp.gameState == gp.playState) {
 //			drawPlayerLife();
 			drawPlayerLife();
+			drawMessage();
 		}
 		//pause state
 		if(gp.gameState == gp.pauseState) {
-//			drawPlayerLife();
+			drawPlayerLife();
 			drawPauseScreen();
 		}
 		//character state
@@ -135,6 +145,32 @@ public class UI {
 			g2.drawImage(crystal_full, x, y, null);
 			i++;
 			x += 35;
+		}
+	}
+	
+	public void drawMessage() {
+		
+		int messageX = gp.tileSize;
+		int messageY = gp.tileSize * 4;
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20));
+		
+		for(int i = 0; i < message.size(); i++) {
+			if(message.get(i) != null) {
+
+				g2.setColor(Color.black);
+				g2.drawString(message.get(i), messageX+2, messageY+2);
+				g2.setColor(Color.white);
+				g2.drawString(message.get(i), messageX, messageY);
+				
+				int counter = messageCounter.get(i) + 1; //messageCounter++
+				messageCounter.set(i, counter); // set the counter to the array
+				messageY += 50;
+				
+				if(messageCounter.get(i) > 180) {
+					message.remove(i);
+					messageCounter.remove(i);
+				}
+			}
 		}
 	}
 	
@@ -373,7 +409,7 @@ public class UI {
 		final int slotYstart = frameY + 20;
 		int slotX = slotXstart;
 		int slotY = slotYstart;
-		int slotSixe = gp.tileSize+3;
+		int slotSize = gp.tileSize+3;
 		
 		//draw player's items
 		for(int  i = 0; i < gp.player.inventory.size(); i++) {
@@ -387,34 +423,34 @@ public class UI {
 			
 			g2.drawImage(gp.player.inventory.get(i).down1, slotX, slotY, null);
 			
-			slotX += slotSixe;
+			slotX += slotSize;
 			 
 			if(i == 4 || i == 9 || i == 14) {
 				slotX = slotXstart;
-				slotY += slotSixe;
+				slotY += slotSize;
 				
 			}
 		}
 		
-		//curson
-		int cursonX = slotXstart + (slotSixe * slotCol);
-		int cursonY = slotYstart + (slotSixe * slotRow);
-		int cursonWidth = gp.tileSize;
-		int cursonHeight = gp.tileSize;
+		//cursor
+		int cursorX = slotXstart + (slotSize * slotCol);
+		int cursorY = slotYstart + (slotSize * slotRow);
+		int cursorWidth = gp.tileSize;
+		int cursorHeight = gp.tileSize;
 		 
-		//draw curson
+		//draw cursor
 		g2.setColor(Color.white);
 		g2.setStroke(new BasicStroke(3));
-		g2.drawRoundRect(cursonX, cursonY, cursonWidth, cursonHeight, 10, 10);
+		g2.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight, 10, 10);
 		
-		//desscription frame
+		//description frame
 		int dFrameX = frameX;
 		int dframeY = frameY + frameHeight;
 		int dFrameWidth = frameWidht;
 		int dFrameHeight = gp.tileSize*3;
 		drawSubWindow(dFrameX, dframeY, dFrameWidth, dFrameHeight);
 		
-		//desscription frame text
+		//description frame text
 		int textX = dFrameX + 20;
 		int textY = dframeY + gp.tileSize;
 		g2.setFont(g2.getFont().deriveFont(20F));
@@ -473,7 +509,7 @@ public class UI {
 	}
 	
 	public int getItemIndexOnSlot() {
-		int itemIndex = slotCol + (slotRow * 3);
+		int itemIndex = slotCol + (slotRow * 5);
 		return itemIndex;
 		
 	}

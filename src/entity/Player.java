@@ -14,6 +14,7 @@ import object.OBJ_Key;
 import object.OBJ_Rock;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
+import monster.MON_GreenSlime;
 
 public class Player extends Entity{
 	
@@ -344,6 +345,7 @@ public class Player extends Entity{
 				if(inventory.size() != maxInventorySize) {
 					inventory.add(gp.obj[gp.currentMap][i]);
 					gp.playSE(1);
+					gp.ui.addMessage("Got a " + gp.obj[gp.currentMap][i].name);
 				}
 				gp.obj[gp.currentMap][i] = null;
 			}
@@ -389,12 +391,17 @@ public class Player extends Entity{
 				}
 				
 				gp.monster[gp.currentMap][i].life -= 2;
+				gp.ui.addMessage(damage + " damage!");
+				
+				
 				gp.monster[gp.currentMap][i].invincible = true;
 				gp.monster[gp.currentMap][i].damageReaction();
 				
 				if(gp.monster[gp.currentMap][i].life <= 0) {
 					gp.monster[gp.currentMap][i].dying = true;
+					gp.ui.addMessage("Killed the " + gp.monster[gp.currentMap][i].name + "!");
 					exp += gp.monster[gp.currentMap][i].exp;
+					gp.ui.addMessage("Exp + " + gp.monster[gp.currentMap][i].exp);
 					checkLevelUp();
 				}
 			}
@@ -413,6 +420,7 @@ public class Player extends Entity{
 			defense = getDefense();
 			
 			gp.playSE(7);
+			gp.ui.addMessage("Level up!");
 		}
 	}
 	
