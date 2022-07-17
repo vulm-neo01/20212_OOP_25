@@ -61,28 +61,33 @@ public class KeyHandler implements KeyListener{
 			
 			if(code == KeyEvent.VK_W) {
 				gp.ui.commandNum--;
+				gp.playSE(8);
 				if(gp.ui.commandNum < 0) {
 					gp.ui.commandNum = 3;
 				}
 			}
 			if(code == KeyEvent.VK_S) {
 				gp.ui.commandNum++;
+				gp.playSE(8);
 				if(gp.ui.commandNum > 3) {
 					gp.ui.commandNum = 0;
 				}
 			}
 			if(gp.ui.commandNum == 0) {
 				if(code == KeyEvent.VK_ENTER) {
+					gp.playSE(12);
 					gp.ui.characterNum = 0;
 				}
 			}
 			
 			if(gp.ui.commandNum == 1) {
 				if(code == KeyEvent.VK_ENTER) {
+					gp.playSE(12);
 					gp.ui.characterNum = 1;
 				}
 			}
 			if(code == KeyEvent.VK_ENTER) {
+				gp.playSE(12);
 				if(gp.ui.commandNum == 2) {
 					gp.ui.titleScreenState = 1;
 				}
@@ -95,17 +100,20 @@ public class KeyHandler implements KeyListener{
 			
 			if(code == KeyEvent.VK_W) {
 				gp.ui.commandNum--;
+				gp.playSE(8);
 				if(gp.ui.commandNum < 0) {
 					gp.ui.commandNum = 2;
 				}
 			}
 			if(code == KeyEvent.VK_S) {
 				gp.ui.commandNum++;
+				gp.playSE(8);
 				if(gp.ui.commandNum > 2) {
 					gp.ui.commandNum = 0;
 				}
 			}
 			if(code == KeyEvent.VK_ENTER) {
+				gp.playSE(12);
 	
 				if(gp.ui.commandNum == 0) {
 //					System.out.println("You some thief specific atuff!");
@@ -257,13 +265,17 @@ public class KeyHandler implements KeyListener{
 			gp.playSE(8);
 		}
 		if(code == KeyEvent.VK_ENTER) {
+			gp.playSE(12);
 			if(gp.ui.commandNum == 0) {
 				gp.gameState = gp.playState;
 				gp.retry();
 				gp.playMusic(0);
 			}
 			else if(gp.ui.commandNum == 1) {
-				System.exit(0);
+				gp.gameState = gp.titleState;
+				gp.ui.titleScreenState = 0;
+				gp.restart();
+				gp.playMusic(0);
 			}
 		}
 	}

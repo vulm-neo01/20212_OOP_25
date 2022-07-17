@@ -498,12 +498,12 @@ public class UI {
 		}
 		
 		//Back to the title screen
-		text = "End";
+		text = "Quit";
 		x = getXforCenteredText(text);
 		y += 65;
 		g2.drawString(text, x, y);
 		if(commandNum == 1) {
-			drawButton(x-10, y-gp.tileSize, 130, 65, "End");
+			drawButton(x-10, y-gp.tileSize, 130, 65, "Quit");
 //			g2.drawString(">", x-40, y);
 		}
 	}

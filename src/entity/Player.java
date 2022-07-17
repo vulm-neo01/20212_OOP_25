@@ -201,7 +201,7 @@ public class Player extends Entity{
 			int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
 			contactMonster(monsterIndex);
 			
-			//check enent
+			//check event
 			gp.eHandler.checkEvent();
 			
 			// If collision is false, player can move

@@ -45,7 +45,7 @@ public class Entity {
 	int dyingCounter = 0;
 	int hpBarCounter = 0;
 	
-	//charecter status
+	//character status
 	public int maxLife;
 	public int life;
 	public int maxMana;
