@@ -50,37 +50,49 @@ public class MON_GreenSlime extends Entity{
 	
 	public void setAction() {
 		
-		actionLookCounter ++;
+		if(onPath == true) {
+			int goalCol = (gp.player.worldX + gp.player.solidArea.x)/gp.tileSize;
+			int goalRow = (gp.player.worldY + gp.player.solidArea.y)/gp.tileSize;
+			
+			searchPath(goalCol, goalRow);
+			
+			int i = new Random().nextInt(200) + 1;
+			if(i > 197 && projectile.alive == false && shotAvaliableCounter == 30) {
+				projectile.set(worldX, worldY, direction, true, this);
+				gp.projectileList.add(projectile);
+				shotAvaliableCounter = 0;
+			}
+		} else {
+			actionLookCounter ++;
 		
-		if(actionLookCounter == 120) {
+			if(actionLookCounter == 120) {
 			
-			Random random = new Random();
-			int i = random.nextInt(100) + 1;
-			if(i <= 25) {
-				direction = "up";
+				Random random = new Random();
+				int i = random.nextInt(100) + 1;
+	//			System.out.println(i);
+				if(i <= 25) {
+					direction = "up";
+				}
+				if(i > 25 && i <= 50) {
+					direction = "down";
+				}
+				if( i > 50 && i <= 75) {
+					direction = "left";
+				}
+				if(i > 75 && i <= 100) {
+					direction = "right";
+				}
+				actionLookCounter = 0;
 			}
-			if(i > 25 && i <= 50) {
-				direction = "down";
-			}
-			if( i > 50 && i <= 75) {
-				direction = "left";
-			}
-			if(i > 75 && i <= 100) {
-				direction = "right";
-			}
-			actionLookCounter = 0;
-			
 		}
-		int i = new Random().nextInt(100) + 1;
-		if(i > 99 && projectile.alive == false && shotAvaliableCounter == 30) {
-			projectile.set(worldX, worldY, direction, true, this);
-			gp.projectileList.add(projectile);
-			shotAvaliableCounter = 0;
-		}
+		
+		
+		
 	}
-	public void damageRection() {
+	public void damageReaction() {
 		actionLookCounter = 0;
-		direction = gp.player.direction;
+//		direction = gp.player.direction;
+		onPath = true;
 	}
 	public void checkDrop() {
 		

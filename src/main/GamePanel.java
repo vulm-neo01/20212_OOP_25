@@ -11,6 +11,7 @@ import java.util.Comparator;
 
 import javax.swing.JPanel;
 
+import ai.PathFinder;
 import entity.Entity;
 import entity.Player;
 import object.OBJ_Background;
@@ -45,13 +46,14 @@ public class GamePanel extends JPanel implements Runnable {
 	int FPS = 60;
 	
 	public UI ui = new UI(this);
-	TileManager tileM = new TileManager(this);
+	public TileManager tileM = new TileManager(this);
 	public KeyHandler keyH = new KeyHandler(this);
 	Sound music = new Sound();
 	Sound se = new Sound();
 	public CollisionChecker cChecker = new CollisionChecker(this); 
 	public AssetSetter aSetter = new AssetSetter(this);
 	public EventHandler eHandler = new EventHandler(this);
+	public PathFinder pFinder = new PathFinder(this);
 	Thread gameThread;
 	
 	//entity and object

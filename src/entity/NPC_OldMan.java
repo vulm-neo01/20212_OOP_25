@@ -24,11 +24,16 @@ public class NPC_OldMan extends Entity{
 		right2 = setup("/npc/oldman_right_2", gp.tileSize, gp.tileSize);
 	}
 	
-//	public void setDialogue() {
-//		dialogues[0] = "Hello, Iad.";
-//	}
-//	
+
 	public void setAction() {
+		
+		if(onPath == true) {
+			int goalCol = (gp.player.worldX + gp.player.solidArea.x)/gp.tileSize;
+			int goalRow = (gp.player.worldY + gp.player.solidArea.y)/gp.tileSize;
+			
+			searchPath(goalCol, goalRow);
+		}
+		
 		actionLookCounter ++;
 		
 		if(actionLookCounter == 120) {
