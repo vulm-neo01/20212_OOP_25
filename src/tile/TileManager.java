@@ -77,8 +77,7 @@ public class TileManager {
 		setup(42, "hut", false);
 		setup(43, "floor01", false);
 		setup(44, "table01", true);
-		
-				
+					
 	}
 	
 	public void setup(int index, String imageName, boolean collision) {

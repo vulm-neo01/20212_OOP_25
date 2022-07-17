@@ -1,6 +1,8 @@
 package main;
 
 import entity.Entity;
+import entity.Player;
+import tiles_interactive.InteractiveTile;
 
 public class CollisionChecker {
 	
@@ -205,4 +207,5 @@ public class CollisionChecker {
 		
 		return contactPlay;
 	}
+
 }
