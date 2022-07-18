@@ -186,7 +186,7 @@ public class UI {
 			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 90F));
 			String text = "GROUP 25";
 			int x = getXforCenteredText(text);
-			int y = gp.tileSize*3;
+			int y = gp.tileSize*2;
 			
 			//Shadom
 			g2.setColor(Color.gray);
@@ -195,35 +195,24 @@ public class UI {
 			//main color
 			g2.setColor(Color.white);
 			g2.drawString(text, x, y);
-				
-			
-			//image
-			x = gp.screenWidth/2 - (gp.tileSize)*3;
-			y += gp.tileSize*2;
-			player = setup("/player/boy_down_1", gp.tileSize, gp.tileSize);
-			g2.drawImage(player, x, y, gp.tileSize*2, gp.tileSize*2, null);
-			if (commandNum == 0) {
-				drawButtonCharacter(x - 10 , y - 10, gp.tileSize*2 + 20, gp.tileSize*2 + 20);
-//					System.out.println(gp.player.characterNum + " 0000");
-			}
-			
-			player = setup("/npc/oldman_down_1", gp.tileSize, gp.tileSize);
-			x = gp.screenWidth/2 + (gp.tileSize);
-			g2.drawImage(player, x, y, gp.tileSize*2, gp.tileSize*2, null);
-			if (commandNum == 1) {
-				drawButtonCharacter(x - 10 , y - 10, gp.tileSize*2 + 20, gp.tileSize*2 + 20);
-//					System.out.println(gp.player.characterNum + " 0000");
-			}
 			
 			//menu
 			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
 			
 			text = "START";
 			x = getXforCenteredText(text);
-			y += gp.tileSize*3.5;
+			y += gp.tileSize*3;
 			g2.drawString(text, x, y);
-			if(commandNum == 2) {
+			if(commandNum == 0) {
 				drawButton(x - 15, y - 50, 170, 65, "START");
+			}
+			
+			text = "LOAD GAME";
+			x = getXforCenteredText(text);
+			y += gp.tileSize*2;
+			g2.drawString(text, x, y);
+			if(commandNum == 1) {
+				drawButton(x - 15, y - 50, 280, 65, "LOAD GAME");
 			}
 			
 			
@@ -231,9 +220,10 @@ public class UI {
 			x = getXforCenteredText(text);
 			y += gp.tileSize*2;
 			g2.drawString(text, x, y);
-			if(commandNum == 3) {
+			if(commandNum == 2) {
 				drawButton(x-15, y-50, 120, 65, "END");
 			}
+			
 		} else if(titleScreenState == 1) {
 			g2.drawImage(gp.background.down1, 0, 0, gp.screenWidth, gp.screenHeight, null);
 			g2.setColor(Color.white);
@@ -243,21 +233,30 @@ public class UI {
 			int x;
 			int y = gp.tileSize;
 			
-			text = "Hard";
+			text = "Easy";
 			x = getXforCenteredText(text);
 			y += gp.tileSize*3;
 			g2.drawString(text, x, y);
 			if(commandNum == 0) {
-				drawButton(x - 15, y - 50, 130, 65, "Hard");
+				drawButton(x - 15, y - 50, 125, 65, "Easy");
 //				g2.drawString(">", x - gp.tileSize, y);
 			}
 			
-			text = "Easy";
+			text = "Medium";
 			x = getXforCenteredText(text);
 			y += gp.tileSize*2;
 			g2.drawString(text, x, y);
 			if(commandNum == 1) {
-				drawButton(x - 15, y - 50, 130, 65, "Easy");
+				drawButton(x - 15, y - 50, 178, 65, "Medium");
+//				g2.drawString(">", x - gp.tileSize, y);
+			}
+			
+			text = "Hard";
+			x = getXforCenteredText(text);
+			y += gp.tileSize*2;
+			g2.drawString(text, x, y);
+			if(commandNum == 2) {
+				drawButton(x - 15, y - 50, 125, 65, "Hard");
 //				g2.drawString(">", x - gp.tileSize, y);
 			}
 			
@@ -265,9 +264,34 @@ public class UI {
 			x = getXforCenteredText(text);
 			y += gp.tileSize*2;
 			g2.drawString(text, x, y);
-			if(commandNum == 2) {
-				drawButton(x - 15, y - 50, 130, 65, "Back");
+			if(commandNum == 3) {
+				drawButton(x - 15, y - 50, 125, 65, "Back");
 //				g2.drawString(">", x - gp.tileSize, y);
+			}
+		} else if(titleScreenState == 2) {
+			g2.drawImage(gp.background.down1, 0, 0, gp.screenWidth, gp.screenHeight, null);
+			
+
+			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 50F));			
+			String text = "Choose your saved game";
+			
+			int x = getXforCenteredText(text);
+			int y = gp.tileSize*3;
+			g2.drawString(text, x, y);
+			
+			text = "Game saved 1";
+			x = getXforCenteredText(text);
+			y+= gp.tileSize*3;
+			g2.drawString(text, x, y);
+			if(commandNum == 0) {
+				drawButton(x - 15, y - 50, 370, 65, text);
+			}
+			text = "Back";
+			x = getXforCenteredText(text);
+			y+= gp.tileSize*3;
+			g2.drawString(text, x, y);
+			if(commandNum == 1) {
+				drawButton(x - 15, y - 50, 160, 65, text);
 			}
 		}
 	}

@@ -19,12 +19,7 @@ public class MON_GreenSlime extends Entity{
 		this.gp = gp;
 		type = type_monster;
 		name = "Green Slime";
-		speed = 1;
-		maxLife = 4;
-		life = maxLife;
-		attack = 5;
-		defense = 0;
-		exp = 2;
+		getStatsOnDifficulty();
 		projectile = new OBJ_Rock(gp);
 		
 		
@@ -37,6 +32,36 @@ public class MON_GreenSlime extends Entity{
 		
 		getImage();
 	}
+	
+	public void getStatsOnDifficulty() {
+		speed = 1;
+		maxLife = 4;
+		life = maxLife;
+		attack = 2;
+		defense = 0;
+		exp = 2;
+		switch(gp.difficulty) {
+		case 0:
+			break;
+		case 1:
+			speed = (int)(1.2*speed);
+			maxLife = (int)(1.5*maxLife);
+			life = maxLife;
+			attack = (int)(1.2*attack);
+			defense = (int)(1.2*defense);
+			break;
+		case 2:
+			speed = (int)(1.5*speed);
+			maxLife = (int)(2*maxLife);
+			life = maxLife;
+			attack = (int)(1.5*attack);
+			defense = (int)(1.5*defense);
+			break;
+		default: 
+			break;
+		}
+	}
+	
 	public void getImage() {
 		up1 = setup("/monster/greenslime_down_1", gp.tileSize, gp.tileSize);
 		up2 = setup("/monster/greenslime_down_2", gp.tileSize, gp.tileSize);

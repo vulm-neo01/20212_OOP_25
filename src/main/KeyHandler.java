@@ -63,45 +63,6 @@ public class KeyHandler implements KeyListener{
 				gp.ui.commandNum--;
 				gp.playSE(8);
 				if(gp.ui.commandNum < 0) {
-					gp.ui.commandNum = 3;
-				}
-			}
-			if(code == KeyEvent.VK_S) {
-				gp.ui.commandNum++;
-				gp.playSE(8);
-				if(gp.ui.commandNum > 3) {
-					gp.ui.commandNum = 0;
-				}
-			}
-			if(gp.ui.commandNum == 0) {
-				if(code == KeyEvent.VK_ENTER) {
-					gp.playSE(12);
-					gp.ui.characterNum = 0;
-				}
-			}
-			
-			if(gp.ui.commandNum == 1) {
-				if(code == KeyEvent.VK_ENTER) {
-					gp.playSE(12);
-					gp.ui.characterNum = 1;
-				}
-			}
-			if(code == KeyEvent.VK_ENTER) {
-				gp.playSE(12);
-				if(gp.ui.commandNum == 2) {
-					gp.ui.titleScreenState = 1;
-				}
-				if(gp.ui.commandNum == 3 ) {
-					System.exit(0);
-				}
-			}
-		}
-		else if(gp.ui.titleScreenState == 1) {
-			
-			if(code == KeyEvent.VK_W) {
-				gp.ui.commandNum--;
-				gp.playSE(8);
-				if(gp.ui.commandNum < 0) {
 					gp.ui.commandNum = 2;
 				}
 			}
@@ -114,21 +75,90 @@ public class KeyHandler implements KeyListener{
 			}
 			if(code == KeyEvent.VK_ENTER) {
 				gp.playSE(12);
+				if(gp.ui.commandNum == 0) {
+					gp.ui.titleScreenState = 1;
+				}
+				if(gp.ui.commandNum == 1) {
+					gp.ui.titleScreenState = 2;
+				}
+				if(gp.ui.commandNum == 2) {
+					System.exit(0);
+				}
+			}
+		}
+		else if(gp.ui.titleScreenState == 1) {
+			
+			if(code == KeyEvent.VK_W) {
+				gp.ui.commandNum--;
+				gp.playSE(8);
+				if(gp.ui.commandNum < 0) {
+					gp.ui.commandNum = 3;
+				}
+			}
+			if(code == KeyEvent.VK_S) {
+				gp.ui.commandNum++;
+				gp.playSE(8);
+				if(gp.ui.commandNum > 3) {
+					gp.ui.commandNum = 0;
+				}
+			}
+			if(code == KeyEvent.VK_ENTER) {
+				gp.playSE(12);
 	
 				if(gp.ui.commandNum == 0) {
-//					System.out.println("You some thief specific atuff!");
+					gp.difficulty = 0;
+					gp.setupGame();
 					gp.gameState = gp.playState;
 					gp.playMusic(0);
 				}
 				if(gp.ui.commandNum == 1 ) {
-//					System.out.println("You some scrocerer specific atuff!");
+					gp.difficulty = 1;
+					gp.setupGame();
 					gp.gameState = gp.playState;
 					gp.playMusic(0);
 				}
 				if(gp.ui.commandNum == 2 ) {
+					gp.difficulty = 2;
+					gp.setupGame();
+					gp.gameState = gp.playState;
+					gp.playMusic(0);
+				}
+				if(gp.ui.commandNum == 3 ) {
+					gp.playMusic(0);
 					gp.ui.titleScreenState = 0;
 				}
 			}
+		} else if(gp.ui.titleScreenState == 2) {
+			if(code == KeyEvent.VK_W){
+        		gp.ui.commandNum--;
+        		gp.playSE(8);
+        		if(gp.ui.commandNum<0) {
+        			
+        			gp.ui.commandNum = 1;
+        		}
+        	}
+        	if(code == KeyEvent.VK_S){
+        		gp.ui.commandNum++;
+        		gp.playSE(8);
+        		if(gp.ui.commandNum > 1) {
+        			
+        			gp.ui.commandNum = 0;
+        		}
+        	}
+        	if(code==KeyEvent.VK_ENTER) {
+        		gp.playSE(12);
+        		if(gp.ui.commandNum==0) {
+        			gp.saveGame.loadSavedGame();
+        			gp.setupGame();
+        			
+        			gp.gameState = gp.playState;
+        		}
+        		if(gp.ui.commandNum==1) {
+        			
+        			gp.ui.titleScreenState = 0;
+        		}
+        		gp.ui.commandNum = 0;
+        	}
 		}
 	}
 	
