@@ -16,7 +16,7 @@ public class SaveGame {
 	}
 	public void saveGame() {
 		try {
-			FileWriter fw = new FileWriter("savedGame2.txt");
+			FileWriter fw = new FileWriter("GameSaved.txt");
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(String.valueOf(gp.difficulty));
 			bw.newLine();
@@ -52,7 +52,7 @@ public class SaveGame {
 	}
 	public void loadSavedGame() {
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("savedGame2.txt"));
+			BufferedReader br = new BufferedReader(new FileReader("GameSaved.txt"));
 			String s = br.readLine();
 			gp.difficulty = Integer.parseInt(s);
 			s = br.readLine();
