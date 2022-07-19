@@ -84,8 +84,9 @@ public class TileManager {
 		setup(46,"brick2", false);
 		setup(47,"brick3", false);
 		setup(48,"cauthang", true);
-		setup(49,"bigdoor1", true);
+		setup(49,"bigdoor1", false);
 		setup(50,"cauthang2", false);
+		setup(51,"cauthang3", false);
 					
 	}
 	
