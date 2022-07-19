@@ -9,7 +9,9 @@ import java.util.ArrayList;
 
 import main.GamePanel;
 import main.KeyHandler;
+import object.OBJ_Armor_Silver;
 import object.OBJ_Fireball;
+import object.OBJ_Helmet_Silver;
 import object.OBJ_Key;
 import object.OBJ_Rock;
 import object.OBJ_Shield_Wood;
@@ -28,6 +30,7 @@ public class Player extends Entity{
 	public ArrayList<Entity> inventory = new ArrayList<>();
 	public final int maxInventorySize = 20;
 	public int color;
+
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		
@@ -72,11 +75,11 @@ public class Player extends Entity{
 		dexterity = 1;
 		exp = 0;
 		nextLevelExp = 5;
-		coin = 0;
 		currentWeapon = new OBJ_Sword_Normal(gp);
 		currentShield = new OBJ_Shield_Wood(gp);
+		currentArmor = new OBJ_Armor_Silver(gp);
+		currentHelmet = new OBJ_Helmet_Silver(gp);
 		projectile = new OBJ_Fireball(gp);
-//		projectile = new OBJ_Rock(gp);
 		attack = getAttact();
 		defense = getDefense();
 	}
@@ -98,15 +101,9 @@ public class Player extends Entity{
 		inventory.clear();
 		inventory.add(currentWeapon);
 		inventory.add(currentShield);
+		inventory.add(currentArmor);
+		inventory.add(currentHelmet);
 		inventory.add(new OBJ_Key(gp));
-//		inventory.add(new OBJ_Key(gp));
-//		inventory.add(new OBJ_Key(gp));
-//		inventory.add(new OBJ_Key(gp));
-//		inventory.add(new OBJ_Key(gp));
-//		inventory.add(new OBJ_Key(gp));
-//		inventory.add(new OBJ_Key(gp));
-//		inventory.add(new OBJ_Key(gp));
-//		inventory.add(new OBJ_Key(gp));
 	}
 	
 	public int getAttact() {
@@ -114,8 +111,8 @@ public class Player extends Entity{
 		return attack = strength * currentWeapon.attackValue;
 	}
 	
-	public int getDefense() { 
-		return defense = dexterity * currentShield.defenseValue;
+	public int getDefense() {
+		return defense = dexterity * (currentShield.defenseValue + currentArmor.defenseValue + currentHelmet.defenseValue);
 	}
 	
 	public void getPlayerImage() {
@@ -200,9 +197,6 @@ public class Player extends Entity{
 			//check monster collision
 			int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
 			contactMonster(monsterIndex);
-			
-			//check interactive tile collision
-			int iTileIndex = gp.cChecker.checkEntity(this, gp.iTile);
 			
 			//check event
 			gp.eHandler.checkEvent();
@@ -392,11 +386,11 @@ public class Player extends Entity{
 				gp.playSE(5);
 				
 				int damage = attack - gp.monster[gp.currentMap][i].defense;
-				if(damage < 0) {
-					damage = 0;
+				if(damage <= 0) {
+					damage = 1;
 				}
 				
-				gp.monster[gp.currentMap][i].life -= 2;
+				gp.monster[gp.currentMap][i].life -= damage;
 				gp.ui.addMessage(damage + " damage!");
 				
 				
@@ -435,7 +429,7 @@ public class Player extends Entity{
 		if(exp >= nextLevelExp) {
 			level++;
 			nextLevelExp = nextLevelExp * 2;
-			maxLife += 2;
+			maxLife += 3;
 			strength ++;
 			dexterity ++;
 			attack = getAttact();
@@ -461,6 +455,15 @@ public class Player extends Entity{
 			if(selectedItem.type == type_shield) {
 				currentShield = selectedItem;
 				defense = getDefense();
+			}
+			if(selectedItem.type == type_armor) {
+				currentArmor = selectedItem;
+				defense = getDefense();
+			}
+			if(selectedItem.type == type_helmet) {
+				currentHelmet = selectedItem;
+				defense = getDefense();
+				
 			}
 			if(selectedItem.type == type_consumable) {
 				selectedItem.use(this);

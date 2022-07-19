@@ -4,10 +4,18 @@ import java.util.Random;
 
 import entity.Entity;
 import main.GamePanel;
+import object.OBJ_Armor_Silver;
+import object.OBJ_Axe;
 import object.OBJ_Coin_Bronze;
 import object.OBJ_Heart;
+import object.OBJ_Helmet_Normal;
+import object.OBJ_Helmet_Silver;
 import object.OBJ_ManaCrystal;
+import object.OBJ_Potion_Blue;
+import object.OBJ_Potion_Red;
 import object.OBJ_Rock;
+import object.OBJ_Shield_Silver;
+import object.OBJ_Sword_Vip;
 
 public class MON_GreenSlime extends Entity{
 
@@ -123,13 +131,26 @@ public class MON_GreenSlime extends Entity{
 		
 		int i = new Random().nextInt(100) + 1;
 		
-		if(i < 50) {
-			dropItem(new OBJ_Coin_Bronze(gp));
+		if(i < 10) {
+			dropItem(new OBJ_Axe(gp));
 		}
-		if(i >= 50 && i < 75) {
+		if(i >= 10 && i < 20) {
+			dropItem(new OBJ_Helmet_Silver(gp));
+		}
+
+		if(i >= 30 && i < 40) {
+			dropItem(new OBJ_Potion_Red(gp));
+		}
+		if(i >= 40 && i < 50) {
+			dropItem(new OBJ_Potion_Blue(gp));
+		}
+		if(i >= 50 && i < 70) {
+			dropItem(new OBJ_Helmet_Normal(gp));
+		}
+		if(i >= 70 && i < 85) {
 			dropItem(new OBJ_Heart(gp));
 		}
-		if(i >= 75 && i < 100) {
+		if(i >= 85 && i < 100) {
 			dropItem(new OBJ_ManaCrystal(gp));
 		}
 	}

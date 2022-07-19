@@ -23,8 +23,6 @@ public class UI {
 	BufferedImage heart_full, heart_haft, heart_blank, crystal_full, crystal_blank;
 	BufferedImage background, player;
 	public boolean messageOn = false;
-//	public String message = "";
-//	int messageCounter = 0;
 	ArrayList<String> message = new ArrayList<>();
 	ArrayList<Integer> messageCounter = new ArrayList<>();
 	
@@ -41,8 +39,6 @@ public class UI {
 		arial_40 = new Font("Arial", Font.PLAIN, 40);
 		arial_80B = new Font("Arial", Font.BOLD, 80);
 		
-//		drawTitlesScreen();
-		// creat hud object
 		Entity heart = new OBJ_Heart(gp);
 		heart_full = heart.image;
 		heart_haft = heart.image2;
@@ -313,7 +309,7 @@ public class UI {
 		final int frameX = gp.tileSize*2;
 		final int frameY = gp.tileSize;
 		final int frameWidth = gp.tileSize*5;
-		final int frameHeight = gp.tileSize*10;
+		final int frameHeight = gp.tileSize*11;
 		drawSubWindow(frameX, frameY, frameWidth, frameHeight);
 	
 		g2.setColor(Color.white);
@@ -341,11 +337,13 @@ public class UI {
 		textY += lineHeight;
 		g2.drawString("Next Level", textX, textY);
 		textY += lineHeight;
-		g2.drawString("Coin", textX, textY);
-		textY += lineHeight + 10;
 		g2.drawString("Weapon", textX, textY);
 		textY += lineHeight + 15;
 		g2.drawString("Shield", textX, textY);
+		textY += lineHeight + 15;
+		g2.drawString("Armor", textX, textY);
+		textY += lineHeight + 15;
+		g2.drawString("Helmet", textX, textY);
 		textY += lineHeight;
 		
 		//values
@@ -399,26 +397,16 @@ public class UI {
 		g2.drawString(value, textX, textY);
 		textY += lineHeight;
 		
-		value = String.valueOf(gp.player.coin);
-		textX = getXforAligntoRightText(value, tailX);
-		g2.drawString(value, textX, textY);
-		textY += lineHeight;
-		
 		g2.drawImage(gp.player.currentWeapon.down1, tailX - gp.tileSize, textY -24, null);
 		textY += gp.tileSize;
 		g2.drawImage(gp.player.currentShield.down1, tailX - gp.tileSize, textY -24, null);
+		textY += gp.tileSize;
+		g2.drawImage(gp.player.currentArmor.down1, tailX - gp.tileSize, textY -24, null);
+		textY += gp.tileSize;
+		g2.drawImage(gp.player.currentHelmet.down1, tailX - gp.tileSize, textY -24, null);
 		
 	}
-//	public void drawDialogueScreen() {
-//		//window
-//		int x = gp.tileSize*2;
-//		int y = gp.tileSize/2;
-//		int width = gp.screenWidth - (gp.tileSize*4);
-//		int hight = gp.tileSize*4;
-//		
-//		drawSubWindow(x, y, width, hight);
-//	}
-	
+
 	public void drawInventory() {
 		
 		int frameX = gp.tileSize*9;
@@ -439,7 +427,9 @@ public class UI {
 		for(int  i = 0; i < gp.player.inventory.size(); i++) {
 			
 			if(gp.player.inventory.get(i) == gp.player.currentWeapon ||
-					gp.player.inventory.get(i) == gp.player.currentShield) {
+					gp.player.inventory.get(i) == gp.player.currentShield ||
+					gp.player.inventory.get(i) == gp.player.currentArmor ||
+					gp.player.inventory.get(i) == gp.player.currentHelmet) {
 				g2.setColor(new Color(240, 190, 90));
 				g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);
 			}

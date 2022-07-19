@@ -58,18 +58,21 @@ public class Entity {
 	public int defense;
 	public int exp;
 	public int nextLevelExp;
-	public int coin;
 	public int level;
 	public int dexterity;
 	public int strength;
+	public int coin;
 	public Entity currentWeapon;
 	public Entity currentShield;
+	public Entity currentArmor;
+	public Entity currentHelmet;
 	public Projectile projectile;
 	
 	// item attributes
 	public int value;
 	public int attackValue;
 	public int defenseValue;
+	public int healthValue;
 	public String description = "";
 	public int useCost;
 	
@@ -83,6 +86,8 @@ public class Entity {
 	public final int type_shield = 5;
 	public final int type_consumable = 6;
 	public final int type_pickupOnly = 7;
+	public final int type_armor = 8;
+	public final int type_helmet = 9;
 	
 	
 	public Entity(GamePanel gp) {
@@ -182,11 +187,11 @@ public class Entity {
 			gp.playSE(6);
 			
 			int damage = attack - gp.player.defense;
-			if(damage < 0) {
-				damage = 0;
+			if(damage <= 0) {
+				damage = 1;
 			}
 			
-			gp.player.life -= 1;
+			gp.player.life -= damage;
 			gp.player.invincible = true;
 		}
 		
