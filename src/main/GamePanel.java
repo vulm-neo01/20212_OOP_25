@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public final int maxWorldCol = 50;
 	public final int maxWorldRow = 50;
 	public final int maxMap = 10;
-	public int currentMap = 1;
+	public int currentMap = 0;
 	public int difficulty = 0;
 	public final int worldWidth = tileSize * maxWorldCol;
 	public final int worldHieght = tileSize * maxWorldRow;
@@ -63,7 +63,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public Entity background = new OBJ_Background(this);
 	public Entity obj[][] = new Entity[maxMap][20];
 	public Entity npc[][] = new Entity[maxMap][10];
-	public Entity monster[][] = new Entity[maxMap][20];
+	public Entity monster[][] = new Entity[maxMap][50];
 	public InteractiveTile iTile[][] = new InteractiveTile[maxMap][50];
 	public ArrayList<Entity> projectileList = new ArrayList<>();
 	ArrayList<Entity> entityList = new ArrayList<>();

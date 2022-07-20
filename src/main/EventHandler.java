@@ -62,14 +62,17 @@ public class EventHandler {
 //			}
 			
 			
-			else if(hit(0, 23,  12, "up") == true) {
+			else if(hit(0, 22,  12, "up") == true) {
 				healingPool(gp.playState);
 			}
-			else if(hit(0, 10, 39,  "any") == true) {
-				teleport(1, 12, 13);
+			else if(hit(0, 11, 10,  "any") == true) {
+				teleport(1, 10, 39);
 			}
-			else if(hit(1, 12, 13,  "any") == true) {
-				teleport(0, 10, 39);
+			else if(hit(1, 10, 39,  "any") == true) {
+				teleport(0, 11, 10);
+			}
+			else if(hit(1, 12, 9, "any") == true) {
+				gp.ui.drawGameWinScreen();
 			}
 		}
 	}

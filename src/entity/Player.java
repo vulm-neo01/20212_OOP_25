@@ -57,8 +57,8 @@ public class Player extends Entity{
 	}
 	
 	public void setDefaultValues() {
-		worldX = gp.tileSize * 23;
-		worldY = gp.tileSize * 21;
+		worldX = gp.tileSize * 22;
+		worldY = gp.tileSize *39;
 //		worldX = gp.tileSize * 12;
 //		worldY = gp.tileSize * 13;
 		speed = 4;
@@ -100,9 +100,6 @@ public class Player extends Entity{
 		
 		inventory.clear();
 		inventory.add(currentWeapon);
-		inventory.add(currentShield);
-		inventory.add(currentArmor);
-		inventory.add(currentHelmet);
 		inventory.add(new OBJ_Key(gp));
 	}
 	
@@ -430,6 +427,7 @@ public class Player extends Entity{
 			level++;
 			nextLevelExp = nextLevelExp * 2;
 			maxLife += 3;
+			maxMana += 2;
 			strength ++;
 			dexterity ++;
 			attack = getAttact();
