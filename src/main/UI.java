@@ -88,6 +88,9 @@ public class UI {
 		if(gp.gameState == gp.gameOverState) {
 			drawGameOverScreen();
 		}
+		if(gp.gameState == gp.gameWinState) {
+			drawGameWinScreen();
+		}
 	}
 	
 	public void drawPlayerLife() {
@@ -548,6 +551,8 @@ public class UI {
 		g2.drawString(text, x, y);
 		if(commandNum == 0) {
 			drawButton(x-10, y-gp.tileSize, 150, 65, "Retry");
+			gp.currentMap = 0;
+			gp.restart();
 //			g2.drawString(">", x-40, y);
 		}
 		
@@ -558,6 +563,7 @@ public class UI {
 		g2.drawString(text, x, y);
 		if(commandNum == 1) {
 			drawButton(x-10, y-gp.tileSize, 130, 65, "Quit");
+			gp.currentMap = 0;
 //			g2.drawString(">", x-40, y);
 		}
 	}

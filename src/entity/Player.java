@@ -66,7 +66,7 @@ public class Player extends Entity{
 		
 		//player status
 		level= 1;
-		maxLife = 6;
+		maxLife = 60;
 		life = maxLife;
 		maxMana = 4;
 		mana = maxMana;
@@ -85,8 +85,8 @@ public class Player extends Entity{
 	}
 	
 	public void setDefaultPositions() {
-		worldX = gp.tileSize * 23;
-		worldY = gp.tileSize * 21;
+		worldX = gp.tileSize * 22;
+		worldY = gp.tileSize * 39;
 		direction = "down";
 	}
 	

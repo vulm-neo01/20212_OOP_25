@@ -72,7 +72,7 @@ public class EventHandler {
 				teleport(0, 11, 10);
 			}
 			else if(hit(1, 12, 9, "any") == true) {
-				gp.ui.drawGameWinScreen();
+				winGame(gp.gameWinState);
 			}
 		}
 	}
@@ -118,6 +118,13 @@ public class EventHandler {
 		gp.playSE(6);
 		gp.player.life -= 1;
 //		eventRect[col][row].eventDone = true;
+		canTouchEvent = false;
+	}
+	
+	public void winGame(int gameState) {
+		gp.gameState = gameState;
+		
+		
 		canTouchEvent = false;
 	}
 	

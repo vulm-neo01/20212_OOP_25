@@ -54,6 +54,11 @@ public class KeyHandler implements KeyListener{
 			gameOverState(code);
 		}
 		
+		//Game Win State
+		else if(gp.gameState == gp.gameWinState) {
+			gameWinState(code);
+		}
+		
 	}
 	
 	public void titlesState(int code) {
@@ -309,6 +314,38 @@ public class KeyHandler implements KeyListener{
 			}
 		}
 	}
+		
+		public void gameWinState(int code) {
+			if(code == KeyEvent.VK_W) {
+				gp.ui.commandNum--;
+				if(gp.ui.commandNum < 0) {
+					gp.ui.commandNum = 1;
+				}
+				gp.playSE(8);
+			}
+			if(code == KeyEvent.VK_S) {
+				gp.ui.commandNum++;
+				if(gp.ui.commandNum > 1) {
+					gp.ui.commandNum = 0;
+				}
+				gp.playSE(8);
+			}
+			if(code == KeyEvent.VK_ENTER) {
+				gp.playSE(12);
+				if(gp.ui.commandNum == 0) {
+					gp.gameState = gp.playState;
+					gp.retry();
+					gp.playMusic(0);
+				}
+				else if(gp.ui.commandNum == 1) {
+					gp.gameState = gp.titleState;
+					gp.ui.titleScreenState = 0;
+					gp.restart();
+					gp.playMusic(0);
+				}
+			}
+		}
+
 	
 	@Override
 	public void keyReleased(KeyEvent e) {
